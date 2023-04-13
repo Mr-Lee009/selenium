@@ -69,6 +69,10 @@ public class ClassMain {
         }
     }
 
+
+    /**
+     * @author ducla
+     * */
     public static void sleep(int sec) {
         try {
             Thread.sleep(sec);
