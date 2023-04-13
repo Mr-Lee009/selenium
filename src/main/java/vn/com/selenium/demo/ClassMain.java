@@ -16,16 +16,16 @@ public class ClassMain {
 
         //todo: Xpath = //tagename[@Attibute='value']
         String[] elements = new String[]{
-                "//*[@id=\"__next\"]/main/section[2]/div/div/div[1]/h1",
-                "//*[@id=\"__next\"]/main/section[2]/div/div/div[1]/h1",
-                "//*[@class=\"text-momo font-bold\"]",
-                "//*[@class=\"lang-json\"]",
-                "/html/body/nav/ul/li/a"
+//                "//*[@id=\"__next\"]/main/section[2]/div/div/div[1]/h1",
+//                "//*[@id=\"__next\"]/main/section[2]/div/div/div[1]/h1",
+//                "//*[@class=\"text-momo font-bold\"]",
+//                "//*[@class=\"lang-json\"]",
+//                "/html/body/nav/ul/li/a",
+                "/html/body/main/aside/div[1]/div[1]/input"
         };
 
         int i = 1;
         try {
-
             for (String str : elements) {
                 System.out.printf("\n[%s][element %s]================================\n", i, str);
                 List<WebElement> elementLis = webDriver.findElements(By.xpath(str));
@@ -38,16 +38,13 @@ public class ClassMain {
                 System.out.printf("");
                 i++;
             }
-
             /*webDriver.findElement(By.xpath("//*[@class=\"lang-json\"]"));
-
             WebElement textSearch = webDriver.findElement(By.xpath(INPUT_TEXT_SEARCH));
             //textSearch.click();
             textSearch.sendKeys("payment");
-
             webDriver.findElement(By.xpath(INPUT_TEXT_SEARCH)).click();*/
 
-        } catch (Exception e) {//*[@id="__next"]/nav[2]/div/div[3]/form/div/input
+        } catch (Exception e) {
             System.err.printf("\n[%s]Exception error: " + e.getMessage(), i);
         }
         System.out.println("title = " + webDriver.getTitle());
@@ -61,6 +58,10 @@ public class ClassMain {
                 if ("link".equalsIgnoreCase(webElement.getAriaRole())) {
                     sleep(1000);
                     webElement.click();
+                }
+                else if ("searchbox".equalsIgnoreCase(webElement.getAriaRole())) {
+                    sleep(1000);
+                    webElement.sendKeys("payment");
                 }
             } else {
                 System.out.println("is not Enabled");
